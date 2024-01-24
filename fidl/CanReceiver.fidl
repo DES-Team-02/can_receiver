@@ -1,8 +1,14 @@
 package commonapi
 
-interface SpeedSensor {
+interface ParkDistanceControlSensor {
     version { major 0 minor 1 }
 
-    attribute UInt32 speed 
-    attribute UInt32 rpm
+    attribute pdcStruct distances readonly 
+
+    struct pdcStruct {
+        UInt32 front_left
+        UInt32 front_right
+        UInt32 rear_left
+        UInt32 rear_right
+    }
 }
