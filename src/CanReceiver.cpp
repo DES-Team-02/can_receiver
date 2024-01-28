@@ -1,6 +1,6 @@
 #include "CanReceiver.hpp"
 
-CanReceiver::CanReceiver() : raw_rpm(0), running(false) {}
+CanReceiver::CanReceiver() : sensor0(0),sensor1(0),sensor2(0),running(false) {}
 
 CanReceiver::~CanReceiver() {}
 
@@ -49,44 +49,30 @@ void CanReceiver::readData() {
             last_received_time = std::chrono::steady_clock::now();
         }
         switch(frame.can_id){
-            case 0x100: 
+            case 0x200: 
             {
             // read raw data from frame & store
             std::lock_guard<std::mutex> lock(dataMutex);
-            int received_raw_rpm = frame.data[0] << 8 | frame.data[1]; 
-            raw_rpm = received_raw_rpm;
+            short received_sensor_0 = frame.data[0] << 8 | frame.data[1]; 
+            short received_sensor_1 = frame.data[1] << 8 | frame.data[2]; 
+            short received_sensor_2 = frame.data[3] << 8 | frame.data[4]; 
+
+            sensor0 = received_sensor_0;
+            sensor1 = received_sensor_1;
+            sensor2 = received_sensor_2;
             }
         }
     }
 }
 
 void CanReceiver::processAndFilterData() {
+    while(running) {        
+        // std::cout << "----------------------------------" << std::endl;
+        // std::cout << "Received Sensor0   : " << sensor0   << std::endl;
+        // std::cout << "Received Sensor1   : " << sensor1   << std::endl; 
+        // std::cout << "Received Sensor2   : " << sensor2   << std::endl;
 
-    MovingAverageFilter rpmFilter(10, 5); 
-    
-    double PI = M_PI;
-    double filtered_rpm;
-    double filtered_speed;
-
-    while(running) {
-        int current_rpm;
-        // buffer current rpm
-        {
-            std::lock_guard<std::mutex> lock(dataMutex);
-            current_rpm = raw_rpm;
-        }
-        // filtered rpm
-        filtered_rpm = rpmFilter.filter(current_rpm);
-        // calculated speed (sensor wheel on wheel outer-diameter )
-        //filtered_speed = (((filtered_rpm * FACTOR) / WHEEL_RADIUS) * PI) * WHEEL_RADIUS;
-        // calculated speed (sensor wheel on wheel shaft )
-        filtered_speed = ((filtered_rpm) / (WHEEL_RADIUS * 2 * PI)) / 1000;
-        
-        // std::cout << "----------------------------------------" << std::endl;
-        // std::cout << "Received RPM      : " << raw_rpm          << std::endl;
-        // std::cout << "Filtered RPM      : " << filtered_rpm     << std::endl; 
-        // std::cout << "Filtered Speed    : " << filtered_speed   << std::endl;
-        // std::cout << "----------------------------------------" << std::endl;
+        // *put filter in here if needed*
 
         // send values to vSOME/IP
         dataRegister.sendDataToVSomeIP(static_cast<uint32_t>(filtered_rpm), static_cast<uint32_t>(filtered_speed));

@@ -29,13 +29,15 @@ public:
 private:
     CanDataRegister dataRegister;
 
-    const char* CAN_INTERFACE = "can0";
-    const double FACTOR = 0.025;
-    const double WHEEL_RADIUS = 0.065;
+    const char* CAN_INTERFACE = "can1";
     
     int soc;
     std::mutex dataMutex;
-    int raw_rpm;
+
+    short sensor0;
+    short sensor1; 
+    short sensor2; 
+
     std::atomic<bool> running;
     std::chrono::steady_clock::time_point last_received_time;
 

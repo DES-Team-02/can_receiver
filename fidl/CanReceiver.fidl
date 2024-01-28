@@ -3,12 +3,11 @@ package commonapi
 interface ParkDistanceControlSensor {
     version { major 0 minor 1 }
 
-    attribute pdcStruct distances readonly 
+    attribute SonarArrayStruct distances readonly 
 
-    struct pdcStruct {
-        UInt32 front_left
-        UInt32 front_right
-        UInt32 rear_left
-        UInt32 rear_right
+    struct SonarArrayStruct {
+        UInt32 sensor0
+        UInt32 sensor1
+        UInt32 sensor2
     }
 }

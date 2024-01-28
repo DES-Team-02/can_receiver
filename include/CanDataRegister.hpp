@@ -5,7 +5,6 @@
 #include <CommonAPI/CommonAPI.hpp>
 #include "SpeedSensorStubImpl.hpp" 
 
-
 using namespace v0_1::commonapi;
 
 class CanDataRegister {

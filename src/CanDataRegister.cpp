@@ -32,4 +32,3 @@ void CanDataRegister::sendDataToVSomeIP(uint32_t rpm, uint32_t speed) {
     SpeedRpmService->setRpmAttribute(rpm);
     SpeedRpmService->setSpeedAttribute(speed);
 }
-
