@@ -33,7 +33,7 @@ std::shared_ptr<CommonAPI::SomeIP::Proxy> createParkDistanceControlSensorSomeIPP
 void initializeParkDistanceControlSensorSomeIPProxy() {
     CommonAPI::SomeIP::AddressTranslator::get()->insert(
         "local:commonapi.ParkDistanceControlSensor:v0_1:commonapi.ParkDistanceControlSensor",
-        0x6000, 0x101d0, 0, 1);
+        0x1770, 0x1771, 0, 1);
     CommonAPI::SomeIP::Factory::get()->registerProxyCreateMethod(
         "commonapi.ParkDistanceControlSensor:v0_1",
         &createParkDistanceControlSensorSomeIPProxy);
