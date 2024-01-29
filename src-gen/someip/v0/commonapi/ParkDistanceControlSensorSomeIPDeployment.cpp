@@ -7,11 +7,11 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at
  * http://mozilla.org/MPL/2.0/.
  */
-#include <v0/commonapi/SpeedSensorSomeIPDeployment.hpp>
+#include <v0/commonapi/ParkDistanceControlSensorSomeIPDeployment.hpp>
 
 namespace v0 {
 namespace commonapi {
-namespace SpeedSensor_ {
+namespace ParkDistanceControlSensor_ {
 
 // Type-specific deployments
 
@@ -21,6 +21,6 @@ namespace SpeedSensor_ {
 
 // Broadcast-specific deployments
 
-} // namespace SpeedSensor_
+} // namespace ParkDistanceControlSensor_
 } // namespace commonapi
 } // namespace v0

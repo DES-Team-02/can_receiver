@@ -7,10 +7,10 @@
 * If a copy of the MPL was not distributed with this file, You can obtain one at
 * http://mozilla.org/MPL/2.0/.
 */
-#ifndef V0_COMMONAPI_Speed_Sensor_PROXY_BASE_HPP_
-#define V0_COMMONAPI_Speed_Sensor_PROXY_BASE_HPP_
+#ifndef V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_BASE_HPP_
+#define V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_BASE_HPP_
 
-#include <v0/commonapi/SpeedSensor.hpp>
+#include <v0/commonapi/ParkDistanceControlSensor.hpp>
 
 
 
@@ -19,6 +19,11 @@
 #define HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE
 #endif
 
+#include <CommonAPI/Deployment.hpp>
+#include <CommonAPI/InputStream.hpp>
+#include <CommonAPI/OutputStream.hpp>
+#include <CommonAPI/Struct.hpp>
+#include <cstdint>
 
 #include <CommonAPI/Attribute.hpp>
 #include <CommonAPI/Proxy.hpp>
@@ -31,15 +36,13 @@
 namespace v0 {
 namespace commonapi {
 
-class SpeedSensorProxyBase
+class ParkDistanceControlSensorProxyBase
     : virtual public CommonAPI::Proxy {
 public:
-    typedef CommonAPI::ObservableAttribute<uint32_t> SpeedAttribute;
-    typedef CommonAPI::ObservableAttribute<uint32_t> RpmAttribute;
+    typedef CommonAPI::ObservableReadonlyAttribute<::v0::commonapi::ParkDistanceControlSensor::SonarArrayStruct> DistancesAttribute;
 
 
-    virtual SpeedAttribute& getSpeedAttribute() = 0;
-    virtual RpmAttribute& getRpmAttribute() = 0;
+    virtual DistancesAttribute& getDistancesAttribute() = 0;
 
     virtual std::future<void> getCompletionFuture() = 0;
 };
@@ -51,4 +54,4 @@ public:
 // Compatibility
 namespace v0_1 = v0;
 
-#endif // V0_COMMONAPI_Speed_Sensor_PROXY_BASE_HPP_
+#endif // V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_BASE_HPP_

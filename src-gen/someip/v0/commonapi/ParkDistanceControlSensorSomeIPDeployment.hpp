@@ -8,8 +8,8 @@
  * http://mozilla.org/MPL/2.0/.
  */
 
-#ifndef V0_COMMONAPI_Speed_Sensor_SOMEIP_DEPLOYMENT_HPP_
-#define V0_COMMONAPI_Speed_Sensor_SOMEIP_DEPLOYMENT_HPP_
+#ifndef V0_COMMONAPI_Park_Distance_Control_Sensor_SOMEIP_DEPLOYMENT_HPP_
+#define V0_COMMONAPI_Park_Distance_Control_Sensor_SOMEIP_DEPLOYMENT_HPP_
 
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
@@ -24,9 +24,14 @@
 
 namespace v0 {
 namespace commonapi {
-namespace SpeedSensor_ {
+namespace ParkDistanceControlSensor_ {
 
 // Interface-specific deployment types
+typedef CommonAPI::SomeIP::StructDeployment<
+    CommonAPI::SomeIP::IntegerDeployment<uint32_t>,
+    CommonAPI::SomeIP::IntegerDeployment<uint32_t>,
+    CommonAPI::SomeIP::IntegerDeployment<uint32_t>
+> SonarArrayStructDeployment_t;
 
 // Type-specific deployments
 
@@ -36,8 +41,8 @@ namespace SpeedSensor_ {
 
 // Broadcast-specific deployments
 
-} // namespace SpeedSensor_
+} // namespace ParkDistanceControlSensor_
 } // namespace commonapi
 } // namespace v0
 
-#endif // V0_COMMONAPI_Speed_Sensor_SOMEIP_DEPLOYMENT_HPP_
+#endif // V0_COMMONAPI_Park_Distance_Control_Sensor_SOMEIP_DEPLOYMENT_HPP_

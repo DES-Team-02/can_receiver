@@ -7,10 +7,11 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at
  * http://mozilla.org/MPL/2.0/.
  */
-#ifndef V0_COMMONAPI_SPEED_SENSOR_SOMEIP_PROXY_HPP_
-#define V0_COMMONAPI_SPEED_SENSOR_SOMEIP_PROXY_HPP_
+#ifndef V0_COMMONAPI_PARK_DISTANCE_CONTROL_SENSOR_SOMEIP_PROXY_HPP_
+#define V0_COMMONAPI_PARK_DISTANCE_CONTROL_SENSOR_SOMEIP_PROXY_HPP_
 
-#include <v0/commonapi/SpeedSensorProxyBase.hpp>
+#include <v0/commonapi/ParkDistanceControlSensorProxyBase.hpp>
+#include <v0/commonapi/ParkDistanceControlSensorSomeIPDeployment.hpp>
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
@@ -44,31 +45,28 @@
 namespace v0 {
 namespace commonapi {
 
-class SpeedSensorSomeIPProxy
-    : virtual public SpeedSensorProxyBase,
+class ParkDistanceControlSensorSomeIPProxy
+    : virtual public ParkDistanceControlSensorProxyBase,
       virtual public CommonAPI::SomeIP::Proxy {
 public:
-    SpeedSensorSomeIPProxy(
+    ParkDistanceControlSensorSomeIPProxy(
         const CommonAPI::SomeIP::Address &_address,
         const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection);
 
-    virtual ~SpeedSensorSomeIPProxy();
+    virtual ~ParkDistanceControlSensorSomeIPProxy();
 
-    virtual SpeedAttribute& getSpeedAttribute();
-
-    virtual RpmAttribute& getRpmAttribute();
+    virtual DistancesAttribute& getDistancesAttribute();
 
     virtual void getOwnVersion(uint16_t &_major, uint16_t &_minor) const;
 
     virtual std::future<void> getCompletionFuture();
 
 private:
-    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<SpeedAttribute, CommonAPI::SomeIP::IntegerDeployment<uint32_t>>> speed_;
-    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::Attribute<RpmAttribute, CommonAPI::SomeIP::IntegerDeployment<uint32_t>>> rpm_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<DistancesAttribute, ::v0::commonapi::ParkDistanceControlSensor_::SonarArrayStructDeployment_t>> distances_;
 
 };
 
 } // namespace commonapi
 } // namespace v0
 
-#endif // V0_COMMONAPI_Speed_Sensor_SOMEIP_PROXY_HPP_
+#endif // V0_COMMONAPI_Park_Distance_Control_Sensor_SOMEIP_PROXY_HPP_

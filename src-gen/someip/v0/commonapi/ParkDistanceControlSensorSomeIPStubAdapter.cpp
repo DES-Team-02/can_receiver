@@ -7,8 +7,8 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at
  * http://mozilla.org/MPL/2.0/.
  */
-#include <v0/commonapi/SpeedSensorSomeIPStubAdapter.hpp>
-#include <v0/commonapi/SpeedSensor.hpp>
+#include <v0/commonapi/ParkDistanceControlSensorSomeIPStubAdapter.hpp>
+#include <v0/commonapi/ParkDistanceControlSensor.hpp>
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
@@ -25,24 +25,24 @@
 namespace v0 {
 namespace commonapi {
 
-std::shared_ptr<CommonAPI::SomeIP::StubAdapter> createSpeedSensorSomeIPStubAdapter(
+std::shared_ptr<CommonAPI::SomeIP::StubAdapter> createParkDistanceControlSensorSomeIPStubAdapter(
                    const CommonAPI::SomeIP::Address &_address,
                    const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection,
                    const std::shared_ptr<CommonAPI::StubBase> &_stub) {
-    return std::make_shared< SpeedSensorSomeIPStubAdapter<::v0::commonapi::SpeedSensorStub>>(_address, _connection, _stub);
+    return std::make_shared< ParkDistanceControlSensorSomeIPStubAdapter<::v0::commonapi::ParkDistanceControlSensorStub>>(_address, _connection, _stub);
 }
 
-void initializeSpeedSensorSomeIPStubAdapter() {
+void initializeParkDistanceControlSensorSomeIPStubAdapter() {
     CommonAPI::SomeIP::AddressTranslator::get()->insert(
-        "local:commonapi.SpeedSensor:v0_1:commonapi.SpeedSensor",
-         0x3000, 0x55f0, 0, 1);
+        "local:commonapi.ParkDistanceControlSensor:v0_1:commonapi.ParkDistanceControlSensor",
+         0x6000, 0x101d0, 0, 1);
     CommonAPI::SomeIP::Factory::get()->registerStubAdapterCreateMethod(
-        "commonapi.SpeedSensor:v0_1",
-        &createSpeedSensorSomeIPStubAdapter);
+        "commonapi.ParkDistanceControlSensor:v0_1",
+        &createParkDistanceControlSensorSomeIPStubAdapter);
 }
 
-INITIALIZER(registerSpeedSensorSomeIPStubAdapter) {
-    CommonAPI::SomeIP::Factory::get()->registerInterface(initializeSpeedSensorSomeIPStubAdapter);
+INITIALIZER(registerParkDistanceControlSensorSomeIPStubAdapter) {
+    CommonAPI::SomeIP::Factory::get()->registerInterface(initializeParkDistanceControlSensorSomeIPStubAdapter);
 }
 
 } // namespace commonapi
