@@ -2,7 +2,7 @@ import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOME
 import "CanReceiver.fidl"
 
 define org.genivi.commonapi.someip.deployment for interface commonapi.ParkDistanceControlSensor {
-    SomeIpServiceID = 0x6000
+    SomeIpServiceID = 6000
 
     attribute distances {
         SomeIpNotifierEventGroups = { 6100 }
@@ -15,7 +15,9 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.ParkDistan
 define org.genivi.commonapi.someip.deployment for provider as Service {
     instance commonapi.ParkDistanceControlSensor {
         InstanceId = "commonapi.ParkDistanceControlSensor"
-
-        SomeIpInstanceID = 66000
+        SomeIpInstanceID = 6001
+        SomeIpUnicastAddress = "192.168.0.2"
+        SomeIpReliableUnicastPort = 50010
+        SomeIpUnreliableUnicastPort = 50011
     }
 } 
