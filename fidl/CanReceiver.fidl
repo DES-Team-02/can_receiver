@@ -1,6 +1,6 @@
 package commonapi
 
-interface ParkDistanceControlSensor {
+interface ParkDistanceControl {
     version { major 0 minor 1 }
 
     attribute SonarArrayStruct distances readonly 

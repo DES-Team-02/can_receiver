@@ -67,13 +67,10 @@ void CanReceiver::readData() {
 
 void CanReceiver::processAndFilterData() {
     while(running) {        
-        // std::cout << "----------------------------------" << std::endl;
-        // std::cout << "Received Sensor0   : " << sensor0   << std::endl;
-        // std::cout << "Received Sensor1   : " << sensor1   << std::endl; 
-        // std::cout << "Received Sensor2   : " << sensor2   << std::endl;
-
-        // *put filter in here if needed*
-
+        std::cout << "----------------------------------" << std::endl;
+        std::cout << "Received Sensor0   : " << sensor0   << std::endl;
+        std::cout << "Received Sensor1   : " << sensor1   << std::endl; 
+        std::cout << "Received Sensor2   : " << sensor2   << std::endl;
         // send values to vSOME/IP
         dataRegister.sendDataToVSomeIP(static_cast<uint32_t>(filtered_rpm), static_cast<uint32_t>(filtered_speed));
     }
