@@ -7,10 +7,10 @@
 * If a copy of the MPL was not distributed with this file, You can obtain one at
 * http://mozilla.org/MPL/2.0/.
 */
-#ifndef V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_HPP_
-#define V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_HPP_
+#ifndef V0_COMMONAPI_Park_Distance_Control_PROXY_HPP_
+#define V0_COMMONAPI_Park_Distance_Control_PROXY_HPP_
 
-#include <v0/commonapi/ParkDistanceControlSensorProxyBase.hpp>
+#include <v0/commonapi/ParkDistanceControlProxyBase.hpp>
 
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
@@ -30,15 +30,15 @@ namespace v0 {
 namespace commonapi {
 
 template <typename ... _AttributeExtensions>
-class ParkDistanceControlSensorProxy
-    : virtual public ParkDistanceControlSensor,
-      virtual public ParkDistanceControlSensorProxyBase,
+class ParkDistanceControlProxy
+    : virtual public ParkDistanceControl,
+      virtual public ParkDistanceControlProxyBase,
       virtual public _AttributeExtensions... {
 public:
-    ParkDistanceControlSensorProxy(std::shared_ptr<CommonAPI::Proxy> delegate);
-    ~ParkDistanceControlSensorProxy();
+    ParkDistanceControlProxy(std::shared_ptr<CommonAPI::Proxy> delegate);
+    ~ParkDistanceControlProxy();
 
-    typedef ::v0::commonapi::ParkDistanceControlSensor InterfaceType;
+    typedef ::v0::commonapi::ParkDistanceControl InterfaceType;
 
 
     /**
@@ -80,21 +80,21 @@ public:
 
 
  private:
-    std::shared_ptr< ParkDistanceControlSensorProxyBase> delegate_;
+    std::shared_ptr< ParkDistanceControlProxyBase> delegate_;
 };
 
-typedef ParkDistanceControlSensorProxy<> ParkDistanceControlSensorProxyDefault;
+typedef ParkDistanceControlProxy<> ParkDistanceControlProxyDefault;
 
-namespace ParkDistanceControlSensorExtensions {
+namespace ParkDistanceControlExtensions {
     template <template <typename > class _ExtensionType>
     class DistancesAttributeExtension {
      public:
-        typedef _ExtensionType< ParkDistanceControlSensorProxyBase::DistancesAttribute> extension_type;
+        typedef _ExtensionType< ParkDistanceControlProxyBase::DistancesAttribute> extension_type;
     
-        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ParkDistanceControlSensorProxyBase::DistancesAttribute>, extension_type>::value,
+        static_assert(std::is_base_of<typename CommonAPI::AttributeExtension< ParkDistanceControlProxyBase::DistancesAttribute>, extension_type>::value,
                       "Not CommonAPI Attribute Extension!");
     
-        DistancesAttributeExtension(ParkDistanceControlSensorProxyBase& proxy): attributeExtension_(proxy.getDistancesAttribute()) {
+        DistancesAttributeExtension(ParkDistanceControlProxyBase& proxy): attributeExtension_(proxy.getDistancesAttribute()) {
         }
     
         inline extension_type& getDistancesAttributeExtension() {
@@ -105,50 +105,50 @@ namespace ParkDistanceControlSensorExtensions {
         extension_type attributeExtension_;
     };
 
-} // namespace ParkDistanceControlSensorExtensions
+} // namespace ParkDistanceControlExtensions
 
 //
-// ParkDistanceControlSensorProxy Implementation
+// ParkDistanceControlProxy Implementation
 //
 template <typename ... _AttributeExtensions>
-ParkDistanceControlSensorProxy<_AttributeExtensions...>::ParkDistanceControlSensorProxy(std::shared_ptr<CommonAPI::Proxy> delegate):
-        _AttributeExtensions(*(std::dynamic_pointer_cast< ParkDistanceControlSensorProxyBase>(delegate)))...,
-        delegate_(std::dynamic_pointer_cast< ParkDistanceControlSensorProxyBase>(delegate)) {
+ParkDistanceControlProxy<_AttributeExtensions...>::ParkDistanceControlProxy(std::shared_ptr<CommonAPI::Proxy> delegate):
+        _AttributeExtensions(*(std::dynamic_pointer_cast< ParkDistanceControlProxyBase>(delegate)))...,
+        delegate_(std::dynamic_pointer_cast< ParkDistanceControlProxyBase>(delegate)) {
 }
 
 template <typename ... _AttributeExtensions>
-ParkDistanceControlSensorProxy<_AttributeExtensions...>::~ParkDistanceControlSensorProxy() {
+ParkDistanceControlProxy<_AttributeExtensions...>::~ParkDistanceControlProxy() {
 }
 
 
 template <typename ... _AttributeExtensions>
-const CommonAPI::Address &ParkDistanceControlSensorProxy<_AttributeExtensions...>::getAddress() const {
+const CommonAPI::Address &ParkDistanceControlProxy<_AttributeExtensions...>::getAddress() const {
     return delegate_->getAddress();
 }
 
 template <typename ... _AttributeExtensions>
-bool ParkDistanceControlSensorProxy<_AttributeExtensions...>::isAvailable() const {
+bool ParkDistanceControlProxy<_AttributeExtensions...>::isAvailable() const {
     return delegate_->isAvailable();
 }
 
 template <typename ... _AttributeExtensions>
-bool ParkDistanceControlSensorProxy<_AttributeExtensions...>::isAvailableBlocking() const {
+bool ParkDistanceControlProxy<_AttributeExtensions...>::isAvailableBlocking() const {
     return delegate_->isAvailableBlocking();
 }
 
 template <typename ... _AttributeExtensions>
-CommonAPI::ProxyStatusEvent& ParkDistanceControlSensorProxy<_AttributeExtensions...>::getProxyStatusEvent() {
+CommonAPI::ProxyStatusEvent& ParkDistanceControlProxy<_AttributeExtensions...>::getProxyStatusEvent() {
     return delegate_->getProxyStatusEvent();
 }
 
 template <typename ... _AttributeExtensions>
-CommonAPI::InterfaceVersionAttribute& ParkDistanceControlSensorProxy<_AttributeExtensions...>::getInterfaceVersionAttribute() {
+CommonAPI::InterfaceVersionAttribute& ParkDistanceControlProxy<_AttributeExtensions...>::getInterfaceVersionAttribute() {
     return delegate_->getInterfaceVersionAttribute();
 }
 
 
 template <typename ... _AttributeExtensions>
-std::future<void> ParkDistanceControlSensorProxy<_AttributeExtensions...>::getCompletionFuture() {
+std::future<void> ParkDistanceControlProxy<_AttributeExtensions...>::getCompletionFuture() {
     return delegate_->getCompletionFuture();
 }
 
@@ -157,10 +157,10 @@ std::future<void> ParkDistanceControlSensorProxy<_AttributeExtensions...>::getCo
 
 namespace CommonAPI {
 template<template<typename > class _AttributeExtension>
-struct DefaultAttributeProxyHelper< ::v0::commonapi::ParkDistanceControlSensorProxy,
+struct DefaultAttributeProxyHelper< ::v0::commonapi::ParkDistanceControlProxy,
     _AttributeExtension> {
-    typedef typename ::v0::commonapi::ParkDistanceControlSensorProxy<
-            ::v0::commonapi::ParkDistanceControlSensorExtensions::DistancesAttributeExtension<_AttributeExtension>
+    typedef typename ::v0::commonapi::ParkDistanceControlProxy<
+            ::v0::commonapi::ParkDistanceControlExtensions::DistancesAttributeExtension<_AttributeExtension>
     > class_t;
 };
 }
@@ -169,4 +169,4 @@ struct DefaultAttributeProxyHelper< ::v0::commonapi::ParkDistanceControlSensorPr
 // Compatibility
 namespace v0_1 = v0;
 
-#endif // V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_HPP_
+#endif // V0_COMMONAPI_Park_Distance_Control_PROXY_HPP_

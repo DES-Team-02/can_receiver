@@ -7,8 +7,8 @@
 * If a copy of the MPL was not distributed with this file, You can obtain one at
 * http://mozilla.org/MPL/2.0/.
 */
-#ifndef V0_COMMONAPI_PARK_DISTANCE_CONTROL_SENSOR_HPP_
-#define V0_COMMONAPI_PARK_DISTANCE_CONTROL_SENSOR_HPP_
+#ifndef V0_COMMONAPI_PARK_DISTANCE_CONTROL_HPP_
+#define V0_COMMONAPI_PARK_DISTANCE_CONTROL_HPP_
 
 
 
@@ -33,9 +33,9 @@
 namespace v0 {
 namespace commonapi {
 
-class ParkDistanceControlSensor {
+class ParkDistanceControl {
 public:
-    virtual ~ParkDistanceControlSensor() { }
+    virtual ~ParkDistanceControl() { }
 
     static inline const char* getInterface();
     static inline CommonAPI::Version getInterfaceVersion();
@@ -69,11 +69,11 @@ public:
     };
 };
 
-const char* ParkDistanceControlSensor::getInterface() {
-    return ("commonapi.ParkDistanceControlSensor:v0_1");
+const char* ParkDistanceControl::getInterface() {
+    return ("commonapi.ParkDistanceControl:v0_1");
 }
 
-CommonAPI::Version ParkDistanceControlSensor::getInterfaceVersion() {
+CommonAPI::Version ParkDistanceControl::getInterfaceVersion() {
     return CommonAPI::Version(0, 1);
 }
 
@@ -88,4 +88,4 @@ namespace CommonAPI {
 // Compatibility
 namespace v0_1 = v0;
 
-#endif // V0_COMMONAPI_PARK_DISTANCE_CONTROL_SENSOR_HPP_
+#endif // V0_COMMONAPI_PARK_DISTANCE_CONTROL_HPP_

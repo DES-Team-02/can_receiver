@@ -1,0 +1,8 @@
+{
+    "commonapi.ParkDistanceControl" : {
+        "service_id": 6000,
+        "instances" : {
+            "commonapi.ParkDistanceControl": 6001
+        }
+    }
+}

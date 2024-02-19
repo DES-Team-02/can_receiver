@@ -7,11 +7,11 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at
  * http://mozilla.org/MPL/2.0/.
  */
-#ifndef V0_COMMONAPI_PARK_DISTANCE_CONTROL_SENSOR_SOMEIP_PROXY_HPP_
-#define V0_COMMONAPI_PARK_DISTANCE_CONTROL_SENSOR_SOMEIP_PROXY_HPP_
+#ifndef V0_COMMONAPI_PARK_DISTANCE_CONTROL_SOMEIP_PROXY_HPP_
+#define V0_COMMONAPI_PARK_DISTANCE_CONTROL_SOMEIP_PROXY_HPP_
 
-#include <v0/commonapi/ParkDistanceControlSensorProxyBase.hpp>
-#include <v0/commonapi/ParkDistanceControlSensorSomeIPDeployment.hpp>
+#include <v0/commonapi/ParkDistanceControlProxyBase.hpp>
+#include <v0/commonapi/ParkDistanceControlSomeIPDeployment.hpp>
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
@@ -45,15 +45,15 @@
 namespace v0 {
 namespace commonapi {
 
-class ParkDistanceControlSensorSomeIPProxy
-    : virtual public ParkDistanceControlSensorProxyBase,
+class ParkDistanceControlSomeIPProxy
+    : virtual public ParkDistanceControlProxyBase,
       virtual public CommonAPI::SomeIP::Proxy {
 public:
-    ParkDistanceControlSensorSomeIPProxy(
+    ParkDistanceControlSomeIPProxy(
         const CommonAPI::SomeIP::Address &_address,
         const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection);
 
-    virtual ~ParkDistanceControlSensorSomeIPProxy();
+    virtual ~ParkDistanceControlSomeIPProxy();
 
     virtual DistancesAttribute& getDistancesAttribute();
 
@@ -62,11 +62,11 @@ public:
     virtual std::future<void> getCompletionFuture();
 
 private:
-    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<DistancesAttribute, ::v0::commonapi::ParkDistanceControlSensor_::SonarArrayStructDeployment_t>> distances_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<DistancesAttribute, ::v0::commonapi::ParkDistanceControl_::SonarArrayStructDeployment_t>> distances_;
 
 };
 
 } // namespace commonapi
 } // namespace v0
 
-#endif // V0_COMMONAPI_Park_Distance_Control_Sensor_SOMEIP_PROXY_HPP_
+#endif // V0_COMMONAPI_Park_Distance_Control_SOMEIP_PROXY_HPP_

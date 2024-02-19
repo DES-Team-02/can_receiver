@@ -7,10 +7,10 @@
 * If a copy of the MPL was not distributed with this file, You can obtain one at
 * http://mozilla.org/MPL/2.0/.
 */
-#ifndef V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_BASE_HPP_
-#define V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_BASE_HPP_
+#ifndef V0_COMMONAPI_Park_Distance_Control_PROXY_BASE_HPP_
+#define V0_COMMONAPI_Park_Distance_Control_PROXY_BASE_HPP_
 
-#include <v0/commonapi/ParkDistanceControlSensor.hpp>
+#include <v0/commonapi/ParkDistanceControl.hpp>
 
 
 
@@ -36,10 +36,10 @@
 namespace v0 {
 namespace commonapi {
 
-class ParkDistanceControlSensorProxyBase
+class ParkDistanceControlProxyBase
     : virtual public CommonAPI::Proxy {
 public:
-    typedef CommonAPI::ObservableReadonlyAttribute<::v0::commonapi::ParkDistanceControlSensor::SonarArrayStruct> DistancesAttribute;
+    typedef CommonAPI::ObservableReadonlyAttribute<::v0::commonapi::ParkDistanceControl::SonarArrayStruct> DistancesAttribute;
 
 
     virtual DistancesAttribute& getDistancesAttribute() = 0;
@@ -54,4 +54,4 @@ public:
 // Compatibility
 namespace v0_1 = v0;
 
-#endif // V0_COMMONAPI_Park_Distance_Control_Sensor_PROXY_BASE_HPP_
+#endif // V0_COMMONAPI_Park_Distance_Control_PROXY_BASE_HPP_

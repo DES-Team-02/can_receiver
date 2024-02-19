@@ -7,8 +7,8 @@
 * If a copy of the MPL was not distributed with this file, You can obtain one at
 * http://mozilla.org/MPL/2.0/.
 */
-#ifndef V0_COMMONAPI_Park_Distance_Control_Sensor_STUB_HPP_
-#define V0_COMMONAPI_Park_Distance_Control_Sensor_STUB_HPP_
+#ifndef V0_COMMONAPI_Park_Distance_Control_STUB_HPP_
+#define V0_COMMONAPI_Park_Distance_Control_STUB_HPP_
 
 #include <functional>
 #include <sstream>
@@ -16,7 +16,7 @@
 
 
 
-#include <v0/commonapi/ParkDistanceControlSensor.hpp>
+#include <v0/commonapi/ParkDistanceControl.hpp>
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
@@ -43,16 +43,16 @@ namespace commonapi {
 
 /**
  * Receives messages from remote and handles all dispatching of deserialized calls
- * to a stub for the service ParkDistanceControlSensor. Also provides means to send broadcasts
+ * to a stub for the service ParkDistanceControl. Also provides means to send broadcasts
  * and attribute-changed-notifications of observable attributes as defined by this service.
  * An application developer should not need to bother with this class.
  */
-class ParkDistanceControlSensorStubAdapter
+class ParkDistanceControlStubAdapter
     : public virtual CommonAPI::StubAdapter,
-      public virtual ParkDistanceControlSensor {
+      public virtual ParkDistanceControl {
  public:
     ///Notifies all remote listeners about a change of value of the attribute distances.
-    virtual void fireDistancesAttributeChanged(const ::v0::commonapi::ParkDistanceControlSensor::SonarArrayStruct &distances) = 0;
+    virtual void fireDistancesAttributeChanged(const ::v0::commonapi::ParkDistanceControl::SonarArrayStruct &distances) = 0;
 
 
     virtual void deactivateManagedInstances() = 0;
@@ -76,7 +76,7 @@ protected:
 
 /**
  * Defines the necessary callbacks to handle remote set events related to the attributes
- * defined in the IDL description for ParkDistanceControlSensor.
+ * defined in the IDL description for ParkDistanceControl.
  * For each attribute two callbacks are defined:
  * - a verification callback that allows to verify the requested value and to prevent setting
  *   e.g. an invalid value ("onRemoteSet<AttributeName>").
@@ -86,25 +86,25 @@ protected:
  * This class and the one below are the ones an application developer needs to have
  * a look at if he wants to implement a service.
  */
-class ParkDistanceControlSensorStubRemoteEvent
+class ParkDistanceControlStubRemoteEvent
 {
 public:
-    virtual ~ParkDistanceControlSensorStubRemoteEvent() { }
+    virtual ~ParkDistanceControlStubRemoteEvent() { }
 
 };
 
 /**
  * Defines the interface that must be implemented by any class that should provide
- * the service ParkDistanceControlSensor to remote clients.
+ * the service ParkDistanceControl to remote clients.
  * This class and the one above are the ones an application developer needs to have
  * a look at if he wants to implement a service.
  */
-class ParkDistanceControlSensorStub
-    : public virtual CommonAPI::Stub<ParkDistanceControlSensorStubAdapter, ParkDistanceControlSensorStubRemoteEvent>
+class ParkDistanceControlStub
+    : public virtual CommonAPI::Stub<ParkDistanceControlStubAdapter, ParkDistanceControlStubRemoteEvent>
 {
 public:
 
-    virtual ~ParkDistanceControlSensorStub() {}
+    virtual ~ParkDistanceControlStub() {}
     void lockInterfaceVersionAttribute(bool _lockAccess) { static_cast<void>(_lockAccess); }
     bool hasElement(const uint32_t _id) const {
         return (_id < 1);
@@ -112,25 +112,25 @@ public:
     virtual const CommonAPI::Version& getInterfaceVersion(std::shared_ptr<CommonAPI::ClientId> _client) = 0;
 
     /// Provides getter access to the attribute distances
-    virtual const ::v0::commonapi::ParkDistanceControlSensor::SonarArrayStruct &getDistancesAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
+    virtual const ::v0::commonapi::ParkDistanceControl::SonarArrayStruct &getDistancesAttribute(const std::shared_ptr<CommonAPI::ClientId> _client) = 0;
     /// sets attribute with the given value and propagates it to the adapter
-    virtual void fireDistancesAttributeChanged(::v0::commonapi::ParkDistanceControlSensor::SonarArrayStruct _value) {
-    auto stubAdapter = CommonAPI::Stub<ParkDistanceControlSensorStubAdapter, ParkDistanceControlSensorStubRemoteEvent>::stubAdapter_.lock();
+    virtual void fireDistancesAttributeChanged(::v0::commonapi::ParkDistanceControl::SonarArrayStruct _value) {
+    auto stubAdapter = CommonAPI::Stub<ParkDistanceControlStubAdapter, ParkDistanceControlStubRemoteEvent>::stubAdapter_.lock();
     if (stubAdapter)
         stubAdapter->fireDistancesAttributeChanged(_value);
     }
     void lockDistancesAttribute(bool _lockAccess) {
-        auto stubAdapter = CommonAPI::Stub<ParkDistanceControlSensorStubAdapter, ParkDistanceControlSensorStubRemoteEvent>::stubAdapter_.lock();
+        auto stubAdapter = CommonAPI::Stub<ParkDistanceControlStubAdapter, ParkDistanceControlStubRemoteEvent>::stubAdapter_.lock();
         if (stubAdapter)
             stubAdapter->lockDistancesAttribute(_lockAccess);
     }
 
 
-    using CommonAPI::Stub<ParkDistanceControlSensorStubAdapter, ParkDistanceControlSensorStubRemoteEvent>::initStubAdapter;
-    typedef CommonAPI::Stub<ParkDistanceControlSensorStubAdapter, ParkDistanceControlSensorStubRemoteEvent>::StubAdapterType StubAdapterType;
-    typedef CommonAPI::Stub<ParkDistanceControlSensorStubAdapter, ParkDistanceControlSensorStubRemoteEvent>::RemoteEventHandlerType RemoteEventHandlerType;
-    typedef ParkDistanceControlSensorStubRemoteEvent RemoteEventType;
-    typedef ::v0::commonapi::ParkDistanceControlSensor StubInterface;
+    using CommonAPI::Stub<ParkDistanceControlStubAdapter, ParkDistanceControlStubRemoteEvent>::initStubAdapter;
+    typedef CommonAPI::Stub<ParkDistanceControlStubAdapter, ParkDistanceControlStubRemoteEvent>::StubAdapterType StubAdapterType;
+    typedef CommonAPI::Stub<ParkDistanceControlStubAdapter, ParkDistanceControlStubRemoteEvent>::RemoteEventHandlerType RemoteEventHandlerType;
+    typedef ParkDistanceControlStubRemoteEvent RemoteEventType;
+    typedef ::v0::commonapi::ParkDistanceControl StubInterface;
 };
 
 } // namespace commonapi
@@ -140,4 +140,4 @@ public:
 // Compatibility
 namespace v0_1 = v0;
 
-#endif // V0_COMMONAPI_Park_Distance_Control_Sensor_STUB_HPP_
+#endif // V0_COMMONAPI_Park_Distance_Control_STUB_HPP_

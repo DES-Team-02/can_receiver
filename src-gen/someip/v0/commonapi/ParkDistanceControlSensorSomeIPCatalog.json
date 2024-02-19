@@ -1,8 +1,0 @@
-{
-    "commonapi.ParkDistanceControlSensor" : {
-        "service_id": 6000,
-        "instances" : {
-            "commonapi.ParkDistanceControlSensor": 6001
-        }
-    }
-}
