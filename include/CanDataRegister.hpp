@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <CommonAPI/CommonAPI.hpp>
-#include "SpeedSensorStubImpl.hpp" 
+#include "ParkDistanceControlStubImpl.hpp" 
 
 using namespace v0_1::commonapi;
 
@@ -11,11 +11,11 @@ class CanDataRegister {
 public:
     CanDataRegister();
     virtual ~CanDataRegister();
-    void sendDataToVSomeIP(uint32_t rpm, uint32_t speed); 
+    void setServiceAttributes(uint32_t sensor0, uint32_t sensor1, uint32_t sensor2); 
 private:
     std::shared_ptr<CommonAPI::Runtime> runtime;
-    std::shared_ptr<SpeedSensorStubImpl> SpeedRpmService;
-    void SpeedSensor_Init();
+    std::shared_ptr<ParkDistanceControlImpl> ParkDistanceControlService;
+    void ParkDistanceControlInit();
 };
 
 #endif //CAN_DATA_REGISTER_HPP

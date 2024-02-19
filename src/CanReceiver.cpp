@@ -56,7 +56,12 @@ void CanReceiver::readData() {
             short received_sensor_0 = frame.data[0] << 8 | frame.data[1]; 
             short received_sensor_1 = frame.data[1] << 8 | frame.data[2]; 
             short received_sensor_2 = frame.data[3] << 8 | frame.data[4]; 
-
+            // print received data
+            std::cout << "----------------------------------" << std::endl;
+            std::cout << "Received Sensor0   : " << sensor0   << std::endl;
+            std::cout << "Received Sensor1   : " << sensor1   << std::endl; 
+            std::cout << "Received Sensor2   : " << sensor2   << std::endl;
+            // store data in class variables
             sensor0 = received_sensor_0;
             sensor1 = received_sensor_1;
             sensor2 = received_sensor_2;
@@ -65,14 +70,10 @@ void CanReceiver::readData() {
     }
 }
 
-void CanReceiver::processAndFilterData() {
+void CanReceiver::sendData() {
     while(running) {        
-        std::cout << "----------------------------------" << std::endl;
-        std::cout << "Received Sensor0   : " << sensor0   << std::endl;
-        std::cout << "Received Sensor1   : " << sensor1   << std::endl; 
-        std::cout << "Received Sensor2   : " << sensor2   << std::endl;
         // send values to vSOME/IP
-        dataRegister.sendDataToVSomeIP(static_cast<uint32_t>(filtered_rpm), static_cast<uint32_t>(filtered_speed));
+        dataRegister.setServiceAttributes(sensor0, sensor1, , sensor2);
     }
 }
 
