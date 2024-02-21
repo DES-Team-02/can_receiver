@@ -10,6 +10,9 @@
 #ifndef V0_COMMONAPI_PARK_DISTANCE_CONTROL_HPP_
 #define V0_COMMONAPI_PARK_DISTANCE_CONTROL_HPP_
 
+
+
+
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
 #define HAS_DEFINED_COMMONAPI_INTERNAL_COMPILATION_HERE
@@ -44,20 +47,20 @@ public:
             std::get< 1>(values_) = 0ul;
             std::get< 2>(values_) = 0ul;
         }
-        SonarArrayStruct(const uint32_t &_sensor0, const uint32_t &_sensor1, const uint32_t &_sensor2)
+        SonarArrayStruct(const uint32_t &_sensorfrontleft, const uint32_t &_sensorfrontmiddle, const uint32_t &_sensorfrontright)
         {
-            std::get< 0>(values_) = _sensor0;
-            std::get< 1>(values_) = _sensor1;
-            std::get< 2>(values_) = _sensor2;
+            std::get< 0>(values_) = _sensorfrontleft;
+            std::get< 1>(values_) = _sensorfrontmiddle;
+            std::get< 2>(values_) = _sensorfrontright;
         }
-        inline const uint32_t &getSensor0() const { return std::get< 0>(values_); }
-        inline void setSensor0(const uint32_t &_value) { std::get< 0>(values_) = _value; }
-        inline const uint32_t &getSensor1() const { return std::get< 1>(values_); }
-        inline void setSensor1(const uint32_t &_value) { std::get< 1>(values_) = _value; }
-        inline const uint32_t &getSensor2() const { return std::get< 2>(values_); }
-        inline void setSensor2(const uint32_t &_value) { std::get< 2>(values_) = _value; }
+        inline const uint32_t &getSensorfrontleft() const { return std::get< 0>(values_); }
+        inline void setSensorfrontleft(const uint32_t &_value) { std::get< 0>(values_) = _value; }
+        inline const uint32_t &getSensorfrontmiddle() const { return std::get< 1>(values_); }
+        inline void setSensorfrontmiddle(const uint32_t &_value) { std::get< 1>(values_) = _value; }
+        inline const uint32_t &getSensorfrontright() const { return std::get< 2>(values_); }
+        inline void setSensorfrontright(const uint32_t &_value) { std::get< 2>(values_) = _value; }
         inline bool operator==(const SonarArrayStruct& _other) const {
-        return (getSensor0() == _other.getSensor0() && getSensor1() == _other.getSensor1() && getSensor2() == _other.getSensor2());
+        return (getSensorfrontleft() == _other.getSensorfrontleft() && getSensorfrontmiddle() == _other.getSensorfrontmiddle() && getSensorfrontright() == _other.getSensorfrontright());
         }
         inline bool operator!=(const SonarArrayStruct &_other) const {
             return !((*this) == _other);
