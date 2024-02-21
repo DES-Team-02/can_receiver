@@ -6,8 +6,8 @@ interface ParkDistanceControl {
     attribute SonarArrayStruct distances readonly 
 
     struct SonarArrayStruct {
-        UInt32 sensor0
-        UInt32 sensor1
-        UInt32 sensor2
+        UInt32 sensorfrontleft
+        UInt32 sensorfrontmiddle
+        UInt32 sensorfrontright
     }
 }
