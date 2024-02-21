@@ -29,9 +29,9 @@ private:
     const char* CAN_INTERFACE = "can1";
     int soc;
     std::mutex dataMutex;
-    short sensor0;
-    short sensor1; 
-    short sensor2; 
+    short sensorfrontleft;
+    short sensorfrontmiddel; 
+    short sensorfrontright; 
     std::atomic<bool> running;
     std::chrono::steady_clock::time_point last_received_time;
     int  openPort(const char* iface);
