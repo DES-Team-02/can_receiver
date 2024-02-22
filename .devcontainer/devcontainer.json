@@ -5,7 +5,10 @@
 	},
 	"runArgs": [
 		"--init",
-		"--privileged"
+		"--privileged",
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined"
 	],
 	"containerEnv": {
 		"GITHUB_API_TOKEN": "${localEnv:GITHUB_API_TOKEN}",
@@ -17,12 +20,10 @@
 			"extensions": [
 				"twxs.cmake",
 				"ms-vscode.cpptools",
-				"ms-vscode.cpptools-extension-pack"
+				"ms-vscode.cpptools-extension-pack",
+				"ms-azuretools.vscode-docker",
+				"GitHub.copilot"
 			]
 		}
 	}
-	// "onCreateCommand": ".devcontainer/scripts/onCreateCommand.sh",
-	// "postStartCommand": ".devcontainer/scripts/postStartCommand.sh"
-	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "vscode"
 }

@@ -1,6 +1,9 @@
 ### BUILDER ###
 FROM ubuntu:22.04 AS builder
-
+# 
+ARG REINSTALL_CMAKE_VERSION_FROM_SOURCE
+ENV REINSTALL_CMAKE_VERSION_FROM_SOURCE="${REINSTALL_CMAKE_VERSION_FROM_SOURCE:-none}"
+# 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y \
 	git \
