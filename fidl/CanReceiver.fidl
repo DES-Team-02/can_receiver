@@ -11,3 +11,10 @@ interface ParkDistanceControl {
         UInt32 sensorfrontright
     }
 }
+
+interface SpeedSensor {
+    version { major 0 minor 1 }
+
+    attribute UInt32 speed readonly
+    attribute UInt32 rpm readonly
+}
