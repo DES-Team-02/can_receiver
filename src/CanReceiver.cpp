@@ -1,6 +1,6 @@
 #include "CanReceiver.hpp"
 
-CanReceiver::CanReceiver() : sensorfrontleft(0),sensorfrontmiddel(0),sensorfrontright(0),running(false) {}
+CanReceiver::CanReceiver() : raw_rpm(0), sensorfrontleft(0),sensorfrontmiddel(0),sensorfrontright(0),running(false) {}
 
 CanReceiver::~CanReceiver() {}
 
