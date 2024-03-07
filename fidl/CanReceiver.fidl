@@ -1,6 +1,6 @@
 package commonapi
 
-interface ParkDistanceControl {
+interface CanReceiver {
     version { major 0 minor 1 }
 
     attribute SonarArrayStruct distances readonly 
@@ -10,5 +10,7 @@ interface ParkDistanceControl {
         UInt32 sensorfrontmiddle
         UInt32 sensorfrontright
     }
-}
 
+    attribute UInt32 speed readonly
+    attribute UInt32 rpm readonly
+}
