@@ -49,8 +49,14 @@ void CanReceiver::readData() {
             last_received_time = std::chrono::steady_clock::now();
         }
         switch(frame.can_id){
-            case 0x200: 
-            {
+            // I thing this need to be done in a seperate thread
+            // case 0x100: {
+            // // read raw data from frame & store
+            // std::lock_guard<std::mutex> lock(dataMutex);
+            // int received_raw_rpm = frame.data[0] << 8 | frame.data[1]; 
+            // raw_rpm = received_raw_rpm;
+            // }
+            case 0x200: {
             // read raw data from frame & store
             std::lock_guard<std::mutex> lock(dataMutex);
             short received_sensor_0 = frame.data[0] << 8 | frame.data[1]; 
