@@ -8,8 +8,8 @@
  * http://mozilla.org/MPL/2.0/.
  */
 
-#ifndef V0_COMMONAPI_Park_Distance_Control_SOMEIP_DEPLOYMENT_HPP_
-#define V0_COMMONAPI_Park_Distance_Control_SOMEIP_DEPLOYMENT_HPP_
+#ifndef V0_COMMONAPI_Can_Receiver_SOMEIP_DEPLOYMENT_HPP_
+#define V0_COMMONAPI_Can_Receiver_SOMEIP_DEPLOYMENT_HPP_
 
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
@@ -24,7 +24,7 @@
 
 namespace v0 {
 namespace commonapi {
-namespace ParkDistanceControl_ {
+namespace CanReceiver_ {
 
 // Interface-specific deployment types
 typedef CommonAPI::SomeIP::StructDeployment<
@@ -41,8 +41,8 @@ typedef CommonAPI::SomeIP::StructDeployment<
 
 // Broadcast-specific deployments
 
-} // namespace ParkDistanceControl_
+} // namespace CanReceiver_
 } // namespace commonapi
 } // namespace v0
 
-#endif // V0_COMMONAPI_Park_Distance_Control_SOMEIP_DEPLOYMENT_HPP_
+#endif // V0_COMMONAPI_Can_Receiver_SOMEIP_DEPLOYMENT_HPP_

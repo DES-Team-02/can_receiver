@@ -7,8 +7,8 @@
 * If a copy of the MPL was not distributed with this file, You can obtain one at
 * http://mozilla.org/MPL/2.0/.
 */
-#ifndef V0_COMMONAPI_PARK_DISTANCE_CONTROL_HPP_
-#define V0_COMMONAPI_PARK_DISTANCE_CONTROL_HPP_
+#ifndef V0_COMMONAPI_CAN_RECEIVER_HPP_
+#define V0_COMMONAPI_CAN_RECEIVER_HPP_
 
 
 
@@ -33,9 +33,9 @@
 namespace v0 {
 namespace commonapi {
 
-class ParkDistanceControl {
+class CanReceiver {
 public:
-    virtual ~ParkDistanceControl() { }
+    virtual ~CanReceiver() { }
 
     static inline const char* getInterface();
     static inline CommonAPI::Version getInterfaceVersion();
@@ -69,11 +69,11 @@ public:
     };
 };
 
-const char* ParkDistanceControl::getInterface() {
-    return ("commonapi.ParkDistanceControl:v0_1");
+const char* CanReceiver::getInterface() {
+    return ("commonapi.CanReceiver:v0_1");
 }
 
-CommonAPI::Version ParkDistanceControl::getInterfaceVersion() {
+CommonAPI::Version CanReceiver::getInterfaceVersion() {
     return CommonAPI::Version(0, 1);
 }
 
@@ -88,4 +88,4 @@ namespace CommonAPI {
 // Compatibility
 namespace v0_1 = v0;
 
-#endif // V0_COMMONAPI_PARK_DISTANCE_CONTROL_HPP_
+#endif // V0_COMMONAPI_CAN_RECEIVER_HPP_

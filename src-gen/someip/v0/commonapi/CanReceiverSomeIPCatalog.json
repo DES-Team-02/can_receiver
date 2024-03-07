@@ -1,0 +1,8 @@
+{
+    "commonapi.CanReceiver" : {
+        "service_id": 3000,
+        "instances" : {
+            "commonapi.CanReceiver": 3001
+        }
+    }
+}

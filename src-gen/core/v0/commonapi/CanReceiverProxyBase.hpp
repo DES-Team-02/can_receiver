@@ -7,10 +7,10 @@
 * If a copy of the MPL was not distributed with this file, You can obtain one at
 * http://mozilla.org/MPL/2.0/.
 */
-#ifndef V0_COMMONAPI_Park_Distance_Control_PROXY_BASE_HPP_
-#define V0_COMMONAPI_Park_Distance_Control_PROXY_BASE_HPP_
+#ifndef V0_COMMONAPI_Can_Receiver_PROXY_BASE_HPP_
+#define V0_COMMONAPI_Can_Receiver_PROXY_BASE_HPP_
 
-#include <v0/commonapi/ParkDistanceControl.hpp>
+#include <v0/commonapi/CanReceiver.hpp>
 
 
 
@@ -36,13 +36,17 @@
 namespace v0 {
 namespace commonapi {
 
-class ParkDistanceControlProxyBase
+class CanReceiverProxyBase
     : virtual public CommonAPI::Proxy {
 public:
-    typedef CommonAPI::ObservableReadonlyAttribute<::v0::commonapi::ParkDistanceControl::SonarArrayStruct> DistancesAttribute;
+    typedef CommonAPI::ObservableReadonlyAttribute<::v0::commonapi::CanReceiver::SonarArrayStruct> DistancesAttribute;
+    typedef CommonAPI::ObservableReadonlyAttribute<uint32_t> SpeedAttribute;
+    typedef CommonAPI::ObservableReadonlyAttribute<uint32_t> RpmAttribute;
 
 
     virtual DistancesAttribute& getDistancesAttribute() = 0;
+    virtual SpeedAttribute& getSpeedAttribute() = 0;
+    virtual RpmAttribute& getRpmAttribute() = 0;
 
     virtual std::future<void> getCompletionFuture() = 0;
 };
@@ -54,4 +58,4 @@ public:
 // Compatibility
 namespace v0_1 = v0;
 
-#endif // V0_COMMONAPI_Park_Distance_Control_PROXY_BASE_HPP_
+#endif // V0_COMMONAPI_Can_Receiver_PROXY_BASE_HPP_

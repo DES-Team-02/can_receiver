@@ -7,8 +7,8 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at
  * http://mozilla.org/MPL/2.0/.
  */
-#include <v0/commonapi/ParkDistanceControlSomeIPStubAdapter.hpp>
-#include <v0/commonapi/ParkDistanceControl.hpp>
+#include <v0/commonapi/CanReceiverSomeIPStubAdapter.hpp>
+#include <v0/commonapi/CanReceiver.hpp>
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
@@ -25,24 +25,24 @@
 namespace v0 {
 namespace commonapi {
 
-std::shared_ptr<CommonAPI::SomeIP::StubAdapter> createParkDistanceControlSomeIPStubAdapter(
+std::shared_ptr<CommonAPI::SomeIP::StubAdapter> createCanReceiverSomeIPStubAdapter(
                    const CommonAPI::SomeIP::Address &_address,
                    const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection,
                    const std::shared_ptr<CommonAPI::StubBase> &_stub) {
-    return std::make_shared< ParkDistanceControlSomeIPStubAdapter<::v0::commonapi::ParkDistanceControlStub>>(_address, _connection, _stub);
+    return std::make_shared< CanReceiverSomeIPStubAdapter<::v0::commonapi::CanReceiverStub>>(_address, _connection, _stub);
 }
 
-void initializeParkDistanceControlSomeIPStubAdapter() {
+void initializeCanReceiverSomeIPStubAdapter() {
     CommonAPI::SomeIP::AddressTranslator::get()->insert(
-        "local:commonapi.ParkDistanceControl:v0_1:commonapi.ParkDistanceControl",
-         0x1770, 0x1771, 0, 1);
+        "local:commonapi.CanReceiver:v0_1:commonapi.CanReceiver",
+         0xbb8, 0xbb9, 0, 1);
     CommonAPI::SomeIP::Factory::get()->registerStubAdapterCreateMethod(
-        "commonapi.ParkDistanceControl:v0_1",
-        &createParkDistanceControlSomeIPStubAdapter);
+        "commonapi.CanReceiver:v0_1",
+        &createCanReceiverSomeIPStubAdapter);
 }
 
-INITIALIZER(registerParkDistanceControlSomeIPStubAdapter) {
-    CommonAPI::SomeIP::Factory::get()->registerInterface(initializeParkDistanceControlSomeIPStubAdapter);
+INITIALIZER(registerCanReceiverSomeIPStubAdapter) {
+    CommonAPI::SomeIP::Factory::get()->registerInterface(initializeCanReceiverSomeIPStubAdapter);
 }
 
 } // namespace commonapi

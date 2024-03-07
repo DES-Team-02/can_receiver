@@ -7,11 +7,11 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at
  * http://mozilla.org/MPL/2.0/.
  */
-#include <v0/commonapi/ParkDistanceControlSomeIPDeployment.hpp>
+#include <v0/commonapi/CanReceiverSomeIPDeployment.hpp>
 
 namespace v0 {
 namespace commonapi {
-namespace ParkDistanceControl_ {
+namespace CanReceiver_ {
 
 // Type-specific deployments
 
@@ -21,6 +21,6 @@ namespace ParkDistanceControl_ {
 
 // Broadcast-specific deployments
 
-} // namespace ParkDistanceControl_
+} // namespace CanReceiver_
 } // namespace commonapi
 } // namespace v0

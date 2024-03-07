@@ -7,11 +7,11 @@
  * If a copy of the MPL was not distributed with this file, You can obtain one at
  * http://mozilla.org/MPL/2.0/.
  */
-#ifndef V0_COMMONAPI_PARK_DISTANCE_CONTROL_SOMEIP_PROXY_HPP_
-#define V0_COMMONAPI_PARK_DISTANCE_CONTROL_SOMEIP_PROXY_HPP_
+#ifndef V0_COMMONAPI_CAN_RECEIVER_SOMEIP_PROXY_HPP_
+#define V0_COMMONAPI_CAN_RECEIVER_SOMEIP_PROXY_HPP_
 
-#include <v0/commonapi/ParkDistanceControlProxyBase.hpp>
-#include <v0/commonapi/ParkDistanceControlSomeIPDeployment.hpp>
+#include <v0/commonapi/CanReceiverProxyBase.hpp>
+#include <v0/commonapi/CanReceiverSomeIPDeployment.hpp>
 
 #if !defined (COMMONAPI_INTERNAL_COMPILATION)
 #define COMMONAPI_INTERNAL_COMPILATION
@@ -45,28 +45,34 @@
 namespace v0 {
 namespace commonapi {
 
-class ParkDistanceControlSomeIPProxy
-    : virtual public ParkDistanceControlProxyBase,
+class CanReceiverSomeIPProxy
+    : virtual public CanReceiverProxyBase,
       virtual public CommonAPI::SomeIP::Proxy {
 public:
-    ParkDistanceControlSomeIPProxy(
+    CanReceiverSomeIPProxy(
         const CommonAPI::SomeIP::Address &_address,
         const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection);
 
-    virtual ~ParkDistanceControlSomeIPProxy();
+    virtual ~CanReceiverSomeIPProxy();
 
     virtual DistancesAttribute& getDistancesAttribute();
+
+    virtual SpeedAttribute& getSpeedAttribute();
+
+    virtual RpmAttribute& getRpmAttribute();
 
     virtual void getOwnVersion(uint16_t &_major, uint16_t &_minor) const;
 
     virtual std::future<void> getCompletionFuture();
 
 private:
-    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<DistancesAttribute, ::v0::commonapi::ParkDistanceControl_::SonarArrayStructDeployment_t>> distances_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<DistancesAttribute, ::v0::commonapi::CanReceiver_::SonarArrayStructDeployment_t>> distances_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<SpeedAttribute, CommonAPI::SomeIP::IntegerDeployment<uint32_t>>> speed_;
+    CommonAPI::SomeIP::ObservableAttribute<CommonAPI::SomeIP::ReadonlyAttribute<RpmAttribute, CommonAPI::SomeIP::IntegerDeployment<uint32_t>>> rpm_;
 
 };
 
 } // namespace commonapi
 } // namespace v0
 
-#endif // V0_COMMONAPI_Park_Distance_Control_SOMEIP_PROXY_HPP_
+#endif // V0_COMMONAPI_Can_Receiver_SOMEIP_PROXY_HPP_
