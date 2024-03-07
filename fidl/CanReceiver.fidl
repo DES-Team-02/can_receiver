@@ -4,13 +4,12 @@ interface CanReceiver {
     version { major 0 minor 1 }
 
     attribute SonarArrayStruct distances readonly 
+    attribute UInt32 speed readonly
+    attribute UInt32 rpm readonly
 
     struct SonarArrayStruct {
         UInt32 sensorfrontleft
         UInt32 sensorfrontmiddle
         UInt32 sensorfrontright
     }
-
-    attribute UInt32 speed readonly
-    attribute UInt32 rpm readonly
 }

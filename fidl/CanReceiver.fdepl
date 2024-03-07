@@ -1,23 +1,34 @@
 import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
 import "CanReceiver.fidl"
 
-define org.genivi.commonapi.someip.deployment for interface commonapi.ParkDistanceControl {
-    SomeIpServiceID = 6000
-
+define org.genivi.commonapi.someip.deployment for interface commonapi.CanReceiver {
+    SomeIpServiceID = 3000
     attribute distances {
-        SomeIpNotifierEventGroups = { 6100 }
-        SomeIpNotifierID = 61000
-        SomeIpGetterID = 6101
+        SomeIpNotifierEventGroups = { 3100 }
+        SomeIpNotifierID = 31000
+        SomeIpGetterID = 3101
+        SomeIpAttributeReliable = true
+    }
+    attribute speed {
+        SomeIpNotifierEventGroups = { 3200 }
+        SomeIpNotifierID = 32000
+        SomeIpGetterID = 3201
+        SomeIpAttributeReliable = true
+    }
+    attribute rpm {
+        SomeIpNotifierEventGroups = { 3300 }
+        SomeIpNotifierID = 33000
+        SomeIpGetterID = 3301
         SomeIpAttributeReliable = true
     }
 }
 
 define org.genivi.commonapi.someip.deployment for provider as Service {
-    instance commonapi.ParkDistanceControl {
-        InstanceId = "commonapi.ParkDistanceControl"
-        SomeIpInstanceID = 6001
+    instance commonapi.CanReceiver {
+        InstanceId = "commonapi.CanReceiver"
+        SomeIpInstanceID = 3001
         SomeIpUnicastAddress = "192.168.0.2"
-        SomeIpReliableUnicastPort = 50010
-        SomeIpUnreliableUnicastPort = 50011
+        SomeIpReliableUnicastPort = 30010
+        SomeIpUnreliableUnicastPort = 30011
     }
 } 
