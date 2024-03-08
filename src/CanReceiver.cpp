@@ -1,6 +1,6 @@
 #include "CanReceiver.hpp"
 
-CanReceiver::CanReceiver() : sensorfrontleft(0),sensorfrontmiddel(0),sensorfrontright(0),running(false) {}
+CanReceiver::CanReceiver() : raw_rpm(0), sensorfrontleft(0), sensorfrontmiddel(0), sensorfrontright(0), running(false) {}
 
 CanReceiver::~CanReceiver() {}
 
@@ -49,13 +49,18 @@ void CanReceiver::readData() {
             last_received_time = std::chrono::steady_clock::now();
         }
         switch(frame.can_id){
-            case 0x200: 
-            {
+            case 0x100: {
+            // read raw data from frame & store
+            std::lock_guard<std::mutex> lock(dataMutex);
+            int received_raw_rpm = frame.data[0] << 8 | frame.data[1]; 
+            raw_rpm = received_raw_rpm;
+            }
+            case 0x200: {
             // read raw data from frame & store
             std::lock_guard<std::mutex> lock(dataMutex);
             short received_sensor_0 = frame.data[0] << 8 | frame.data[1]; 
-            short received_sensor_1 = frame.data[1] << 8 | frame.data[2]; 
-            short received_sensor_2 = frame.data[3] << 8 | frame.data[4]; 
+            short received_sensor_1 = frame.data[2] << 8 | frame.data[3]; 
+            short received_sensor_2 = frame.data[4] << 8 | frame.data[5]; 
             // print received data
             std::cout << "----------------------------------" << std::endl;
             std::cout << "Received Sensor0   : " << sensor0   << std::endl;
@@ -82,7 +87,8 @@ void CanReceiver::closePort() {
 }
 
 int CanReceiver::run() {
-    if (openPort(CAN_INTERFACE) < 0) {
+    // open CAN ports
+    if ((openPort(CAN_INTERFACE_0)||openPort(CAN_INTERFACE_1)) < 0) {
         return -1;
     }
 
